@@ -1,11 +1,11 @@
-IO-All-LWP version 0.11
+IO-All-LWP version 0.12
 =======================
 
 This module acts as glue between IO::All and LWP, so that files can be read and
 written through the network using the convenient IO:All interface.  Note that
 this module is not "use"d directly: you just use IO::All, which knows when to
-autoload IO::All::HTTP, IO::All::HTTPS, or IO::All::FTP, which implement the
-specific protocols with base on IO::All::LWP.
+autoload IO::All::HTTP, IO::All::HTTPS, IO::All::FTP, or IO::All::Gopher, which
+implement the specific protocols based on IO::All::LWP.
 
 INSTALLATION
 

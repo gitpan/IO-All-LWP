@@ -2,7 +2,7 @@ package IO::All::LWP;
 require 5.008;
 use strict;
 use warnings;
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 use IO::All 0.30 '-Base';
 use LWP::UserAgent;
 use IO::Handle;
@@ -113,8 +113,9 @@ IO::All::LWP - IO::All interface to LWP
 This module acts as glue between L<IO::All> and L<LWP>, so that files can be
 read and written through the network using the convenient L<IO:All> interface.
 Note that this module is not C<use>d directly: you just use L<IO::All>, which
-knows when to autoload L<IO::All::HTTP>, L<IO::All::HTTPS>, or L<IO::All::FTP>,
-which implement the specific protocols with base on L<IO::All::LWP>.
+knows when to autoload L<IO::All::HTTP>, L<IO::All::HTTPS>, L<IO::All::FTP>, or
+L<IO::All::Gopher>, which implement the specific protocols based on
+L<IO::All::LWP>.
 
 =head1 EXECUTION MODEL
 

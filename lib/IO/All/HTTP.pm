@@ -1,7 +1,7 @@
 package IO::All::HTTP;
 use strict;
 use warnings;
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 use IO::All::LWP '-Base';
 use URI::http; 
 use URI::_userpass; 

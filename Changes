@@ -1,5 +1,8 @@
 Revision history for IO-All-LWP
 
+0.12  2004-11-02
+        - Added IO::All::LWP module. Thanks Richard Soderberg!
+
 0.11  2004-10-1
         - Added ua method.
         - Fixed error in the docs.
