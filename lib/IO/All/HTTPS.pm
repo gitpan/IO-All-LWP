@@ -1,7 +1,7 @@
 package IO::All::HTTPS;
 use strict;
 use warnings;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 use IO::All::HTTP '-Base';
 
 const type => 'https';
@@ -24,7 +24,7 @@ IO::All::HTTPS - Extends IO::All for HTTPS URLs
 
     # two ways of getting a page with a password:
     $content < io('https://me:secret@example.org');
-    $content < io('https://example.org')->user('me')->passwd('secret');
+    $content < io('https://example.org')->user('me')->password('secret');
 
 
 =head1 DESCRIPTION

@@ -2,12 +2,12 @@ package IO::All::LWP;
 require 5.008;
 use strict;
 use warnings;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 use IO::All 0.30 '-Base';
 use LWP::UserAgent;
 use IO::Handle;
 
-my $ua = LWP::UserAgent->new;
+my $DEFAULT_UA = LWP::UserAgent->new(env_proxy => 1);
 
 field 'response';
 field 'content';
@@ -17,6 +17,16 @@ sub lwp_init {
     bless $self, shift;
     $self->name(shift) if @_;
     return $self->_init;
+}
+
+sub ua {
+    if (@_) {
+        *$self->{ua} = ref($_[0]) ? shift :
+            LWP::UserAgent->new(@_);
+        return $self;
+    } else {
+        *$self->{ua} ||= $DEFAULT_UA;
+    }
 }
 
 sub uri {
@@ -54,7 +64,7 @@ sub put {
 }
 
 sub request {
-    $self->response($ua->request(shift));
+    $self->response($self->ua->request(shift));
 }
 
 sub open {
@@ -134,6 +144,13 @@ following methods are available:
 
 =over
 
+=item * ua
+
+Set or get the user agent object (L<LWP::UserAgent> or a subclass). If called
+with a list, the list is passed to LWP::UserAgent->new. If called with an
+object, the object is used directly as the user agent. Note that there is a 
+default user agent if no user agent is specified.
+
 =item * uri
 
 Set or get the URI. It can take either a L<URI> object or a string, and 
@@ -146,7 +163,7 @@ Set or get the user name for authentication. Note that the user name (and the
 password) can also be set as part of the URL, as in
 "http://me:secret@example.com/".
 
-=item * passwd
+=item * password
 
 Set or get the password for authentication. Note that the password can also
 be set as part of the URL, as discussed above.
@@ -199,6 +216,8 @@ L<IO::All>, L<LWP>, L<IO::All::HTTP>, L<IO::All::FTP>.
 
 Ivan Tubert-Brohman <itub@cpan.org> and 
 Brian Ingerson <ingy@cpan.org>
+
+Thanks to Sergey Gleizer for the ua method.
 
 =head1 COPYRIGHT
 

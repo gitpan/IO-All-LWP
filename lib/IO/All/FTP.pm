@@ -1,7 +1,7 @@
 package IO::All::FTP;
 use strict;
 use warnings;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 use IO::All::LWP '-Base';
 
 const type => 'ftp';
@@ -25,7 +25,7 @@ IO::All::FTP - Extends IO::All to FTP URLs
 
     # two ways of getting a file with a password:
     $content < io('ftp://me:secret@example.org/xyz');
-    $content < io('ftp://example.org/xyz')->user('me')->passwd('secret');
+    $content < io('ftp://example.org/xyz')->user('me')->password('secret');
 
 =head1 DESCRIPTION
 

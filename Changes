@@ -1,4 +1,8 @@
 Revision history for IO-All-LWP
 
-0.10  Tue Jul 20 18:26:42 EDT 2004
+0.11  2004-10-1
+        - Added ua method.
+        - Fixed error in the docs.
+
+0.10  2004-07-20
 	- First release

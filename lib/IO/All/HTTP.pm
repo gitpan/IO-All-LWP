@@ -1,7 +1,7 @@
 package IO::All::HTTP;
 use strict;
 use warnings;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 use IO::All::LWP '-Base';
 use URI::http; 
 use URI::_userpass; 
@@ -29,7 +29,7 @@ IO::All::LWP - Extends IO::All to HTTP URLs
 
     # two ways of getting a page with a password:
     $content < io('http://me:secret@example.org');
-    $content < io('http://example.org')->user('me')->passwd('secret');
+    $content < io('http://example.org')->user('me')->password('secret');
 
 =head1 DESCRIPTION
 
