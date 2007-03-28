@@ -2,8 +2,8 @@ package IO::All::LWP;
 require 5.008;
 use strict;
 use warnings;
-our $VERSION = '0.12';
-use IO::All 0.30 '-Base';
+our $VERSION = '0.13';
+use IO::All 0.30 '-base';
 use LWP::UserAgent;
 use IO::Handle;
 
@@ -14,12 +14,13 @@ field 'content';
 field 'put_content';
 
 sub lwp_init {
-    bless $self, shift;
+    bless my $self, shift;
     $self->name(shift) if @_;
     return $self->_init;
 }
 
 sub ua {
+    my $self = shift;
     if (@_) {
         *$self->{ua} = ref($_[0]) ? shift :
             LWP::UserAgent->new(@_);
@@ -30,6 +31,7 @@ sub ua {
 }
 
 sub uri {
+    my $self = shift;
     *$self->{uri} = ref($_[0]) ? shift : URI->new(shift)
       if @_;
     return *$self->{uri}
@@ -38,21 +40,25 @@ sub uri {
 }
     
 sub user {
+    my $self = shift;
     $self->uri->user(@_);
     return $self;
 }
 
 sub password {
+    my $self = shift;
     $self->uri->password(@_);
     return $self;
 }
 
 sub get {
+    my $self = shift;
     my $request = shift || HTTP::Request->new('GET', $self->uri);
     $self->request($request);
 }
 
 sub put {
+    my $self = shift;
     my $request = (@_ and ref $_[0])
     ? $_[0]
     : do {
@@ -64,10 +70,12 @@ sub put {
 }
 
 sub request {
+    my $self = shift;
     $self->response($self->ua->request(shift));
 }
 
 sub open {
+    my $self = shift;
     $self->is_open(1);
     my $mode = @_ ? shift : $self->mode ? $self->mode : '<';
     $self->mode($mode);
@@ -85,11 +93,12 @@ sub open {
 }
 
 sub close {
+    my $self = shift;
     if ($self->is_open and defined $self->mode and $self->mode eq '>') {
         $self->content(${$self->put_content});
         $self->put;
     }
-    super;
+    $self->SUPER::close;
 }
 
 1;
@@ -222,7 +231,7 @@ Thanks to Sergey Gleizer for the ua method.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2004. Ivan Tubert-Brohman and Brian Ingerson. All rights reserved.
+Copyright (c) 2007. Ivan Tubert-Brohman and Brian Ingerson. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

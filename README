@@ -1,4 +1,4 @@
-IO-All-LWP version 0.12
+IO-All-LWP version 0.13
 =======================
 
 This module acts as glue between IO::All and LWP, so that files can be read and

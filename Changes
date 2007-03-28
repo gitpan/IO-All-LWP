@@ -1,5 +1,9 @@
 Revision history for IO-All-LWP
 
+0.13  2007-03-28
+        - Updated for new version of IO::All. Thanks to MAREKR for sending a
+          patch!
+
 0.12  2004-11-02
         - Added IO::All::LWP module. Thanks Richard Soderberg!
 

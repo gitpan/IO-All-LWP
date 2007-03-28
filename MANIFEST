@@ -9,7 +9,6 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 iocp.pl
 lib/IO/All/FTP.pm
-lib/IO/All/Gopher.pm
 lib/IO/All/HTTP.pm
 lib/IO/All/HTTPS.pm
 lib/IO/All/LWP.pm
@@ -19,7 +18,6 @@ MANIFEST.bak
 META.yml
 README
 t/ftp.t
-t/gopher.t
 t/http.t
 t/https.t
 t/lwp.t

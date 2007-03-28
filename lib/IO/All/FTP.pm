@@ -1,12 +1,12 @@
 package IO::All::FTP;
 use strict;
 use warnings;
-our $VERSION = '0.12';
-use IO::All::LWP '-Base';
+our $VERSION = '0.13';
+use IO::All::LWP '-base';
 
 const type => 'ftp';
 
-sub ftp { $self->lwp_init(__PACKAGE__, @_) }
+sub ftp { my $self=shift; $self->lwp_init(__PACKAGE__, @_) }
 
 1;
 
@@ -56,7 +56,7 @@ Brian Ingerson <ingy@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2004. Ivan Tubert-Brohman and Brian Ingerson. All rights reserved.
+Copyright (c) 2007. Ivan Tubert-Brohman and Brian Ingerson. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
