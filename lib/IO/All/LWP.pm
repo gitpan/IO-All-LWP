@@ -2,7 +2,7 @@ package IO::All::LWP;
 require 5.008;
 use strict;
 use warnings;
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 use IO::All 0.30 '-base';
 use LWP::UserAgent;
 use IO::Handle;
@@ -14,7 +14,8 @@ field 'content';
 field 'put_content';
 
 sub lwp_init {
-    bless my $self, shift;
+    my $self = shift;
+    bless $self, shift;
     $self->name(shift) if @_;
     return $self->_init;
 }
